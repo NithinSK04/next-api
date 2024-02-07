@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
     },
   };
-  axios
+  await axios
     .post(url, data, config)
     .then((response: any) => {
       // Handle success
