@@ -10,9 +10,9 @@ export async function POST(request: Request) {
   // ...
   const req = await request.json();
   //   data = req;
-  if (req.old_record.up_vote) {
-    return;
-  }
+  //   if (req.old_record.up_vote) {
+  //     return;
+  //   }
   let url = "https://e8jy05dj.api.sanity.io/v2022-03-07/data/mutate/production";
   let token =
     "skjTzDOpoZFejZHz7PUnkQxAjhYF4XZtWgn8FsGqI3svHGN1G7b8j8DJeLmsp7CaC3HtyMr5jhjWui1jMG03dqel9wXhADtvQdlnZ5PfKNOUPI1NmlMCTIyMIRlgxtCN7P1guyP5aUN45j4AdkxiRUo5crLeNgp26Cu0LJb4GzSsnlNs4gjM";
@@ -47,11 +47,9 @@ export async function POST(request: Request) {
       //       console.log("Response:", response.data);
     })
     .catch((error) => {
-      // Handle error
-      console.error(
-        "Error:",
-        error.response ? error.response.data : error.message
-      );
+      resp = {
+        error: error,
+      };
     });
 
   return NextResponse.json({ message: "success" });
