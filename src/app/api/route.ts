@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 let resp = {};
 export async function GET(request: Request) {
-  return NextResponse.json({ message: "success", data: [] });
+  return NextResponse.json({ message: "success", data: resp || [] });
 }
 // Handles POST requests to /api
 export async function POST(request: Request) {
