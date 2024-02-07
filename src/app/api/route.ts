@@ -22,7 +22,7 @@ export async function POST(request: Request) {
         create: {
           _id: req.record.id,
           _type: "requests",
-          response: req.record.response,
+          response: [req.record.response],
           request: req.record.request,
         },
       },
