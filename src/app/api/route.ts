@@ -47,9 +47,14 @@ export async function POST(request: Request) {
       //       console.log("Response:", response.data);
     })
     .catch((error) => {
+      // Handle error
       resp = {
-        error: error,
+        error: error.response ? error.response.data : error.message,
       };
+      console.error(
+        "Error:",
+        error.response ? error.response.data : error.message
+      );
     });
 
   return NextResponse.json({ message: "success" });
