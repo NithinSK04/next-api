@@ -1,12 +1,15 @@
 import axios from "axios";
 import { NextResponse } from "next/server";
 
+let resp = {};
+export async function GET(request: Request) {
+  return NextResponse.json({ message: "success", data: resp });
+}
 // Handles POST requests to /api
 export async function POST(request: Request) {
   // ...
   const req = await request.json();
   //   data = req;
-
   if (req.old_record.up_vote) {
     return;
   }
@@ -34,9 +37,14 @@ export async function POST(request: Request) {
   };
   axios
     .post(url, data, config)
-    .then((response) => {
+    .then((response: any) => {
       // Handle success
-      console.log("Response:", response.data);
+      resp = {
+        response: response,
+        record: req.record,
+      };
+
+      //       console.log("Response:", response.data);
     })
     .catch((error) => {
       // Handle error
