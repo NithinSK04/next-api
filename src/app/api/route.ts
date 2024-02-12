@@ -9,13 +9,12 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   // ...
   const req = await request.json();
-  //   data = req;
-  //   if (req.old_record.up_vote) {
-  //     return;
-  //   }
-  let url = "https://e8jy05dj.api.sanity.io/v2022-03-07/data/mutate/production";
+  if (req.old_record.up_vote) {
+    return;
+  }
+  let url = "https://krawj3va.api.sanity.io/v2022-03-07/data/mutate/production";
   let token =
-    "skjTzDOpoZFejZHz7PUnkQxAjhYF4XZtWgn8FsGqI3svHGN1G7b8j8DJeLmsp7CaC3HtyMr5jhjWui1jMG03dqel9wXhADtvQdlnZ5PfKNOUPI1NmlMCTIyMIRlgxtCN7P1guyP5aUN45j4AdkxiRUo5crLeNgp26Cu0LJb4GzSsnlNs4gjM";
+    "skWedoYlxFd07JqCc4neqEHBdh19N4ZXgwLcDzwcaAOw0NusLyvA53m8hZ5sWTAvG1f4iFFYpcaAsVX5WOd0JevmvypqMjEq5bGq17gBpChUN7ekOfnDDzIkm70xtyRKKnlvoDPloDPHCj0tNTTGBZZlSJJpm5JkaB29XCkwCiJvrjUGWTzN";
   let data = {
     mutations: [
       {
