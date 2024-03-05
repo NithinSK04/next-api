@@ -5,13 +5,10 @@ let resp = {};
 export async function GET(request: Request) {
   return NextResponse.json({ message: "success", data: resp || [] });
 }
+
 // Handles POST requests to /api
 export async function POST(request: Request) {
-  // ...
   const req = await request.json();
-  if (req.old_record.up_vote) {
-    return;
-  }
   let url = "https://krawj3va.api.sanity.io/v2022-03-07/data/mutate/production";
   let token =
     "skWedoYlxFd07JqCc4neqEHBdh19N4ZXgwLcDzwcaAOw0NusLyvA53m8hZ5sWTAvG1f4iFFYpcaAsVX5WOd0JevmvypqMjEq5bGq17gBpChUN7ekOfnDDzIkm70xtyRKKnlvoDPloDPHCj0tNTTGBZZlSJJpm5JkaB29XCkwCiJvrjUGWTzN";
@@ -34,6 +31,7 @@ export async function POST(request: Request) {
       "Content-Type": "application/json",
     },
   };
+
   await axios
     .post(url, data, config)
     .then((response: any) => {
@@ -42,8 +40,6 @@ export async function POST(request: Request) {
         response: response,
         record: req.record,
       };
-
-      //       console.log("Response:", response.data);
     })
     .catch((error) => {
       // Handle error
@@ -56,5 +52,5 @@ export async function POST(request: Request) {
       );
     });
 
-  return NextResponse.json({ message: "success" });
+  return NextResponse.json({ message: "success", data: resp });
 }

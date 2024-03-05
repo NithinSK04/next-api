@@ -67,8 +67,10 @@ export async function POST(request: Request) {
       message: "success",
     });
   } catch (error) {
+    console.error("Error processing POST request:", error);
     return NextResponse.json({
-      message: "Error",
-    });
+      message: "Error processing POST request",
+      error: error.message,
+    }, { status: 500 });
   }
 }
