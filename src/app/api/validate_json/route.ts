@@ -8,7 +8,6 @@ export async function GET(request: Request) {
   return NextResponse.json({ message: "success", data: resp || [] });
 }
 
-// Handles POST requests to /api
 export async function POST(request: Request) {
   try {
     const sanity = new Sanity();
@@ -58,7 +57,6 @@ export async function POST(request: Request) {
           ],
         };
       }
-      console.log(entries[i].description);
       promises.push(sanity.createRecord(payload));
     }
 
@@ -69,6 +67,7 @@ export async function POST(request: Request) {
   } catch (error) {
     return NextResponse.json({
       message: "Error",
+      error: error.message,
     });
   }
 }

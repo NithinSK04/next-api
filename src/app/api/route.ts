@@ -5,9 +5,8 @@ let resp = {};
 export async function GET(request: Request) {
   return NextResponse.json({ message: "success", data: resp || [] });
 }
-// Handles POST requests to /api
+
 export async function POST(request: Request) {
-  // ...
   const req = await request.json();
   if (req.old_record.up_vote) {
     return;
@@ -37,16 +36,12 @@ export async function POST(request: Request) {
   await axios
     .post(url, data, config)
     .then((response: any) => {
-      // Handle success
       resp = {
         response: response,
         record: req.record,
       };
-
-      //       console.log("Response:", response.data);
     })
     .catch((error) => {
-      // Handle error
       resp = {
         error: error.response ? error.response.data : error.message,
       };
@@ -56,5 +51,5 @@ export async function POST(request: Request) {
       );
     });
 
-  return NextResponse.json({ message: "success" });
+  return NextResponse.json({ message: "success", data: resp });
 }
