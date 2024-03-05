@@ -7,7 +7,7 @@ export class Sanity {
   constructor() {
     this.projectId = "krawj3va";
     this.token =
-      "skWedoYlxFd07JqCc4neqEHBdh19N4ZXgwLcDzwcaAOw0NusLyvA53m8hZ5sWTAvG1f4iFFYpcaAsVX5WOd0JevmvypqMjEq5bGq17gBpChUN7ekOfnDDzIkm70xtyRKKnlvoDPloDPHCj0tNTTGBZZlSJJpm5JkaB29XCkwCiJvrjUGWTzN"; // Corrected token assignment
+      "skWedoYlxFd07JqCc4neqEHBdh19N4ZXgwLcDzwcaAOw0NusLyvA53m8hZ5sWTAvG1f4iFFYpcaAsVX5WOd0JevmvypqMjEq5bGq17gBpChUN7ekOfnDDzIkm70xtyRKKnlvoDPloDPHCj0tNTTGBZZlSJJpm5JkaB29XCkwCiJvrjUGWTzN";
   }
 
   config() {
@@ -26,10 +26,16 @@ export class Sanity {
         data,
         this.config()
       );
-      console.log("Record created successfully!");
+      console.log(`Record created successfully with ID: ${resp.data.results[0].id}`);
       return resp;
     } catch (error: any) {
-      throw new Error(error);
+      if (error.response) {
+        console.error(`Failed to create record: ${error.response.status} ${error.response.statusText}`);
+        console.error(`Error details: ${error.response.data}`);
+      } else {
+        console.error(`Failed to create record: ${error.message}`);
+      }
+      throw error;
     }
   }
 }
