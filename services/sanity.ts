@@ -7,7 +7,7 @@ export class Sanity {
   constructor() {
     this.projectId = "krawj3va";
     this.token =
-      "skWedoYlxFd07JqCc4neqEHBdh19N4ZXgwLcDzwcaAOw0NusLyvA53m8hZ5sWTAvG1f4iFFYpcaAsVX5WOd0JevmvypqMjEq5bGq17gBpChUN7ekOfnDDzIkm70xtyRKKnlvoDPloDPHCj0tNTTGBZZlSJJpm5JkaB29XCkwCiJvrjUGWTzN"; // Corrected token assignment
+      "skWedoYlxFd07JqCc4neqEHBdh19N4ZXgwLcDzwcaAOw0NusLyvA53m8hZ5sWTAvG1f4iFFYpcaAsVX5WOd0JevmvypqMjEq5bGq17gBpChUN7ekOfnDDzIkm70xtyRKKnlvoDPloDPHCj0tNTTGBZZlSJJpm5JkaB29XCkwCiJvrjUGWTzN";
   }
 
   config() {
